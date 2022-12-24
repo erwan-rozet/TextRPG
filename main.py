@@ -1,12 +1,14 @@
 import random
+
+
 class Character:
     def __init__(self, name, strength, attack, health, dexterity, chance):
         self.name = name
         self.strength = strength
         self.attack = attack
-        self.health
-        self.dexterity
-        self.chance
+        self.health = health
+        self.dexterity = dexterity
+        self.chance = chance
 
 
 class Chest:
@@ -16,7 +18,7 @@ class Chest:
 
 
 guerrier = Character
-guerrier.name= 'Barbarian'
+guerrier.name = 'Barbarian'
 guerrier.strength = 10
 guerrier.attack = 10
 guerrier.health = 50
@@ -35,15 +37,16 @@ inventaire = {"crochets" : 5,
 
               }
 
+
 def ennemy_attack():
     damage = random.randint(0, ennemi.attack)
     print(f"L'ennemi inflige {damage} points de dégats.")
     print(f"Votre santé diminue à {guerrier.health - damage} points de vie.")
 
+
 def afficher_pieces_d_or():
     gp = inventaire["pièces d'or"]
     print(f"Vous avez {gp} pièces d'or au total")
-
 
 
 def chest():
@@ -68,5 +71,3 @@ def chest():
     if chest_answer == "n":
         print("Vous passez votre chemin")
 
-
-chest()
