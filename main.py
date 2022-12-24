@@ -26,16 +26,16 @@ guerrier.dexterity = 2
 guerrier.chance = 5
 
 ennemi = Character
-ennemi.name= 'Gobelin'
+ennemi.name = 'Gobelin'
 ennemi.strength = 10
 ennemi.attack = 7
 ennemi.health = 50
 
 
-inventaire = {"crochets" : 5,
-              "pièces d'or" : 0,
-
-              }
+inventory = {"crochets": 5,
+             "pièces d'or": 0,
+             "potion": 0,
+             }
 
 
 def ennemy_attack():
@@ -44,30 +44,30 @@ def ennemy_attack():
     print(f"Votre santé diminue à {guerrier.health - damage} points de vie.")
 
 
-def afficher_pieces_d_or():
-    gp = inventaire["pièces d'or"]
+def display_gold_pieces():
+    gp = inventory["pièces d'or"]
     print(f"Vous avez {gp} pièces d'or au total")
 
 
 def chest():
-    print(f"Vous trouvez un coffre fermé par une serrure de niveau {Chest.lock_difficulty} (votre niveau de crochetage est de {guerrier.dexterity}). ")
+    print(f"Vous trouvez un coffre fermé par une serrure de niveau {Chest.lock_difficulty} \n"
+          f"(votre niveau de crochetage est de {guerrier.dexterity}). ")
     chest_answer = input("Voulez-vous tenter de l'ouvrir ? y/n : ")
     print()
     if chest_answer == "y":
-        if guerrier.dexterity >= Chest.lock_difficulty and inventaire["crochets"] > 1:
+        if guerrier.dexterity >= Chest.lock_difficulty and inventory["crochets"] > 1:
             print("Vous prenez des crochets et les introduisez dans la serrure.")
             print(f"Vous déverrouillez le coffre, il contient {Chest.gold_pieces} pièces d'or.")
-            inventaire["pièces d'or"] += Chest.gold_pieces
-            afficher_pieces_d_or()
+            inventory["pièces d'or"] += Chest.gold_pieces
+            display_gold_pieces()
         else:
             if guerrier.chance >= Chest.lock_chance:
                 print("La serrure semble particulièrement difficle à ouvrir mais vous essayer quand même.")
                 print(f"Avec un peu de patience et de chance vous réussissez à déverouiller le coffre."
                       f" Il contient {Chest.gold_pieces} pièces d'or.")
-                inventaire["pièces d'or"] += Chest.gold_pieces
-                afficher_pieces_d_or()
+                inventory["pièces d'or"] += Chest.gold_pieces
+                display_gold_pieces()
             else:
                 print("Vous n'avez pas réussi à ouvrir le coffre.")
     if chest_answer == "n":
         print("Vous passez votre chemin")
-
