@@ -35,6 +35,7 @@ ennemi.health = 50
 inventory = {"crochets": 5,
              "pièces d'or": 0,
              "potion": 0,
+             "torche": 0,
              }
 
 
